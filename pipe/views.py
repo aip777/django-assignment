@@ -13,7 +13,7 @@ def index(request):
 
 
 
-@login_required()
+# @login_required()
 def addPipeView(request):
     if request.method == 'POST':
         form = AddPipeForm(request.POST, request.FILES)
@@ -48,7 +48,7 @@ def addPipeView(request):
     return render(request, 'pipe/add-pipe.html', context)
 
 
-@login_required()
+# @login_required()
 def pipelistView(request):
     pipe = Pipe.objects.all()
     context = {
@@ -56,7 +56,7 @@ def pipelistView(request):
     }
     return render(request, 'pipe/pipe-list.html', context)
 
-@login_required()
+# @login_required()
 def updatePipeView(request, id):
     pipe = get_object_or_404(Pipe, id=id)
     if request.method == 'POST':
@@ -78,7 +78,7 @@ def updatePipeView(request, id):
     return render(request, 'pipe/update-pipe.html', context)
 
 
-@login_required()
+# @login_required()
 def contentslistView(request):
     content = Contents.objects.all()
     context = {
@@ -86,7 +86,7 @@ def contentslistView(request):
     }
     return render(request, 'pipe/content-list.html', context)
 
-@login_required()
+# @login_required()
 def coatinglistView(request):
     coating = Coating.objects.all()
     context = {
@@ -94,7 +94,7 @@ def coatinglistView(request):
     }
     return render(request, 'pipe/coating-list.html', context)
 
-@login_required()
+# @login_required()
 def deletePipeView(request, id):
     pipe = get_object_or_404(Pipe, id=id)
     pipe.delete()

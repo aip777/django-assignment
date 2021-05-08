@@ -10,7 +10,7 @@ from .views import (
 
 urlpatterns = [
     path('add-pipe/', addPipeView, name='add-pipe'),
-    path('pipe-list/', pipelistView, name='pipe-list'),
+    path('', pipelistView, name='pipe-list'),
     path('delete-pipe/<int:id>/', deletePipeView, name='delete-pipe'),
     path('update-pipe/<int:id>/', updatePipeView, name='update-pipe'),
 
