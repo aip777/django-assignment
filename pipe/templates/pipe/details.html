@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+<style>
+
+@media print {
+  .noprint {
+    display: none;
+  }
+
+ @page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+    }
+}
+
+
+</style>
+
+{% block content %}
+<div class="col-sm-12">
+    <div class="panel panel-bd">
+        <div id="printableArea">
+            <div class="panel-body">
+                <hr>
+                <div class="table-responsive m-b-20">
+                    <table class="table table-fixed table-bordered table-hover bg-white" id="purchaseTable">
+                        <!-- <thead>
+                        <tr>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Units</th>
+                            <th class="text-center" style="width:100px;">Values</th>
+                        </tr>
+                        </thead> -->
+                        <tbody>
+                         <h1>Calculation Details</h1>
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>Pipe Inside Radius - r1 </strong></td>
+                            <td class="text-right"><strong> {{pipe_inside_radius_r1}} </strong></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>Pipe Outside Radius - r2 </strong></td>
+                            <td class="text-right"><strong> {{pipe_outside_radius_r2}} </strong></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>Outer Radius of Coating 1 - r3 </strong></td>
+                            <td class="text-right"><strong> {{outer_radius_coating_r3}} </strong></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>Total Pipeline Outside Diameter </strong></td>
+                            <td class="text-right"><strong> {{ total_pipeline_outside_diameter }}</strong></td>
+                        </tr>
+                        </tbody>
+                        
+                        <tfoot>
+                        </tfoot>
+                    </table>
+
+
+
+                    <table class="table table-fixed table-bordered table-hover bg-white" id="purchaseTable">
+                        <!-- <thead>
+                        <tr>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Units</th>
+                            <th class="text-center" style="width:100px;">Values</th>
+                        </tr>
+                        </thead> -->
+                        <tbody>
+                         <h1>Calculate Dry Unit Weight</h1>
+                          
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>Pipe Weight per Unit Length in Air (lb/ft): </strong></td>
+                            <td class="text-right"><strong> {{pipe_weight_per_unit_length}} </strong></td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>Coating 1 Wt. per Unit Length in Air (lb/ft): </strong></td>
+                            <td class="text-right"><strong> {{coating_wt_per_unit_length}} </strong></td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>Contents Wt. Per Unit Length in Air (lb/ft): </strong></td>
+                            <td class="text-right"><strong> {{contents_wt_per_unit_length}} </strong></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>
+                                Total Weight per Unit Length in Air (lb/ft): </strong></td>
+                            <td class="text-right"><strong> {{total_pipeline_outside_diameter_obj}} </strong></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right" colspan="4"><strong> Buoyant Force per Unit Length (lb/ft): </strong></td>
+                            <td class="text-right"><strong> {{ buoyant_force_per_unit_length }}</strong></td>
+                        </tr>
+                        </tbody>
+                        
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                    
+
+                    <table class="table table-fixed table-bordered table-hover bg-white" id="purchaseTable">
+                        <!-- <thead>
+                        <tr>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Units</th>
+                            <th class="text-center" style="width:100px;">Values</th>
+                        </tr>
+                        </thead> -->
+                        <tbody>
+                         <h1>Summary of Submerged Weight</h1>
+                          
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>Submerged Weight/Unit Length (lb/ft): </strong></td>
+                            <td class="text-right"><strong> {{submerged}} </strong></td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-right" colspan="4"><strong>Subm. Specific Gravity with respect to S.W: </strong></td>
+                            <td class="text-right"><strong> {{submerged_sw}} </strong></td>
+                        </tr>
+
+                        
+                        </tbody>
+                        
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

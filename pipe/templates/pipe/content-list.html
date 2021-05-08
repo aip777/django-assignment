@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 col-md-12">
+        <div class="card ">
+            <div class="card-header py-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fs-17 font-weight-600 mb-0">Pipe List</h6>
+                    </div>
+
+                    <div class="text-right">
+                        <a href="{% url 'add-pipe' %}"
+                           class="btn btn-success btn-sm mr-1"><i class="fas fa-plus mr-1"></i>Add Pipe</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="foodList_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <table class="table display table-bordered table-striped table-hover dataTable dtr-inline"
+                               cellspacing="0" width="100%" id="kitchenStaffList" role="grid" style="width: 100%;">
+                            <thead>
+                            <tr role="row">
+                                <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Sl">Sl</th>
+                                <th class="sorting_asc" rowspan="1" colspan="1" aria-sort="ascending">Coating</th>
+
+                                <th class="sorting_asc" rowspan="1" colspan="1" aria-sort="ascending">Pipe</th>
+                                <th class="sorting_asc" rowspan="1" colspan="1" aria-sort="ascending">Installation Empty</th>
+                                <th class="sorting_asc" rowspan="1" colspan="1" aria-sort="ascending">Flooded</th>
+                                <th class="sorting_asc" rowspan="1" colspan="1" aria-sort="ascending">Hydrotest</th>
+                                <th class="sorting_asc" rowspan="1" colspan="1" aria-sort="ascending">Description</th>
+                                <th class="sorting_asc" rowspan="1" colspan="1" aria-sort="ascending">Created at</th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for contents in content %}
+                            <tr role="row" class="odd">
+                                <td tabindex="0">{{ contents.id }}</td>
+                                <td width="20%"> {{ contents.coating }}</td>
+                                <td width="50%"> {{ contents.pipe }}</td>
+                                
+                                <td width="20%"> {{ contents.installation_empty }}</td>
+                                <td width="20%"> {{ contents.flooded }}</td>
+                                <td width="20%"> {{ contents.hydrotest }}</td>
+                                <td width="20%"> {{ contents.description }}</td>
+                                <td width="20%"> {{ contents.created_at }}</td>
+
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
