@@ -41,6 +41,8 @@ class AddCoatingForm(forms.ModelForm):
                   'density'
                   )
 
+
+
 class AddContentsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(AddContentsForm, self).__init__(*args, **kwargs)
