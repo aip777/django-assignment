@@ -136,7 +136,7 @@ def detailsView(request, id):
         # =E4+$Input.C11/2
         outer_radius_coating_r3 = pipe_outside_radius_r2 + obj.thickness / 2
         # =E5*2
-        total_pipeline_outside_diameter = outer_radius_coating_r3 * 2
+        total_pipeline_outside_diameter = round(outer_radius_coating_r3 * 2, 2)
 
         density = obj.density
     
@@ -147,21 +147,21 @@ def detailsView(request, id):
 
     # =PI()*(E4^2-E3^2)/144*$Input.B7
     # round(answer, 2)
-    pipe_weight_per_unit_length = math.pi * (math.pow(pipe_outside_radius_r2, 2) - math.pow(pipe_inside_radius_r1, 2)) /144 * pipe.pipe_density
+    pipe_weight_per_unit_length = round(math.pi * (math.pow(pipe_outside_radius_r2, 2) - math.pow(pipe_inside_radius_r1, 2)) /144 * pipe.pipe_density, 2)
     # =PI()*(E5^2-E4^2)/144*$Input.D11
-    coating_wt_per_unit_length = math.pi * (math.pow(outer_radius_coating_r3, 2) - math.pow(pipe_outside_radius_r2, 2)) /144 * density
+    coating_wt_per_unit_length = round(math.pi * (math.pow(outer_radius_coating_r3, 2) - math.pow(pipe_outside_radius_r2, 2)) /144 * density, 2)
     #=PI()*$E$3^2/144*$Input.$C$15
 
     contents_wt_per_unit_length = math.pi * (math.pow(pipe_inside_radius_r1, 2)) /144 * installation_empty
     #=SUM(E9:E11)
-    total_pipeline_outside_diameter_obj = pipe_weight_per_unit_length + coating_wt_per_unit_length + contents_wt_per_unit_length
+    total_pipeline_outside_diameter_obj = round(pipe_weight_per_unit_length + coating_wt_per_unit_length + contents_wt_per_unit_length, 2)
     # =PI()*E5^2/144*$Input.C17
-    buoyant_force_per_unit_length = math.pi * (math.pow(outer_radius_coating_r3, 2)) / 144 * hydrotest
+    buoyant_force_per_unit_length = round(math.pi * (math.pow(outer_radius_coating_r3, 2)) / 144 * hydrotest, 2)
     # =$Output.E12-$Output.$E$13
-    submerged = total_pipeline_outside_diameter_obj - buoyant_force_per_unit_length
+    submerged = round(total_pipeline_outside_diameter_obj - buoyant_force_per_unit_length, 2)
 
     # =$Output.E12/$Output.$E$13
-    submerged_sw = total_pipeline_outside_diameter_obj / buoyant_force_per_unit_length
+    submerged_sw = round(total_pipeline_outside_diameter_obj / buoyant_force_per_unit_length, 2)
 
     context = { 
         'pipe_inside_radius_r1':pipe_inside_radius_r1,
@@ -175,7 +175,7 @@ def detailsView(request, id):
         'total_pipeline_outside_diameter_obj':total_pipeline_outside_diameter_obj,
         'buoyant_force_per_unit_length':buoyant_force_per_unit_length,
 
-        'submerged':submerged,
+        'submerged':submerged, 
         'submerged_sw':submerged_sw,
 
         'pipe': pipe,
